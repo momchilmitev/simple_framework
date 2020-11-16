@@ -35,7 +35,7 @@ class UserRepository implements UserRepositoryInterface
     public function findOneByUsername(string $username): ?UserDTO
     {
         return $this->db->query("
-            SELECT username, password, first_name, last_name, born_on
+            SELECT id, username, password, first_name, last_name, born_on
             FROM users
             WHERE username = ?
         ")
@@ -47,7 +47,7 @@ class UserRepository implements UserRepositoryInterface
     public function findOneById(int $id): ?UserDTO
     {
         return $this->db->query("
-            SELECT username, password, first_name, last_name, born_on
+            SELECT id, username, password, first_name, last_name, born_on
             FROM users
             WHERE id = ?
         ")
@@ -59,7 +59,7 @@ class UserRepository implements UserRepositoryInterface
     public function findAll(): \Generator
     {
         return $this->db->query("
-            SELECT username, password, first_name, last_name, born_on
+            SELECT id, username, password, first_name, last_name, born_on
             FROM users
         ")
             ->execute()
