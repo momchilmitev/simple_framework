@@ -35,7 +35,7 @@ class UserHttpHandler extends UserHttpHandlerAbstract
         }
     }
 
-    public function login(UserServiceInterface $userService, array $data = [])
+    public function login(UserServiceInterface $userService, array $formData = [])
     {
         if (isset($formData['login'])) {
             $this->handleLoginProcess($userService, $formData);
@@ -44,7 +44,7 @@ class UserHttpHandler extends UserHttpHandlerAbstract
         }
     }
 
-    private function handleLoginProcess(UserServiceInterface $userService, $formData)
+    private function handleLoginProcess($userService, $formData)
     {
         $user = $userService->login($formData['username'], $formData['password']);
 
@@ -52,7 +52,7 @@ class UserHttpHandler extends UserHttpHandlerAbstract
             $_SESSION['id'] = $user->getId();
             $this->redirect("profile.php");
         } else {
-            echo "<h1>Wrong credentials!</h1>";
+            $this->render("users/login");
         }
     }
 }
