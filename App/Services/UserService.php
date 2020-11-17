@@ -77,7 +77,7 @@ class UserService implements UserServiceInterface
 
     public function getAll(): \Generator
     {
-        // TODO: Implement getAll() method.
+        return $this->userRepository->findAll();
     }
 
     private function encryptPassword($userDTO)
