@@ -20,7 +20,7 @@
         </label>
         <br>
         <label>
-            confirm Password: <input type="password" name="confirm_password"/>
+            Confirm Password: <input type="password" name="confirm_password"/>
         </label>
         <br>
         <label>

@@ -39,7 +39,17 @@ class UserService implements UserServiceInterface
 
     public function login(string $username, string $password): ?UserDTO
     {
-        // TODO: Implement login() method.
+        $userFromDb = $this->userRepository->findOneByUsername($username);
+
+        if (null === $userFromDb) {
+            return null;
+        }
+
+        if (false === $this->encryptionService->verify($password, $userFromDb->getPassword())) {
+            return null;
+        }
+
+        return $userFromDb;
     }
 
     public function currentUser(): ?UserDTO

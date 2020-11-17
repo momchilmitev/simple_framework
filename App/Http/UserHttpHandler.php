@@ -34,4 +34,25 @@ class UserHttpHandler extends UserHttpHandlerAbstract
 
         }
     }
+
+    public function login(UserServiceInterface $userService, array $data = [])
+    {
+        if (isset($formData['login'])) {
+            $this->handleLoginProcess($userService, $formData);
+        } else {
+            $this->render("users/login");
+        }
+    }
+
+    private function handleLoginProcess(UserServiceInterface $userService, $formData)
+    {
+        $user = $userService->login($formData['username'], $formData['password']);
+
+        if (null !== $user) {
+            $_SESSION['id'] = $user->getId();
+            $this->redirect("profile.php");
+        } else {
+            echo "<h1>Wrong credentials!</h1>";
+        }
+    }
 }
