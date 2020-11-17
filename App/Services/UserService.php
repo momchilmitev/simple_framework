@@ -72,7 +72,15 @@ class UserService implements UserServiceInterface
 
     public function edit(UserDTO $userDTO): bool
     {
-        // TODO: Implement edit() method.
+
+        if (null !== $this->userRepository->findOneByUsername($userDTO->getUsername())) {
+            return false;
+        }
+
+        $this->encryptPassword($userDTO);
+
+        return $this->userRepository->update(intval($_SESSION['id']), $userDTO);
+
     }
 
     public function getAll(): \Generator

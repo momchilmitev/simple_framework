@@ -55,4 +55,36 @@ class UserHttpHandler extends UserHttpHandlerAbstract
             $this->render("users/login");
         }
     }
+
+    public function edit(UserServiceInterface $userService, array $formData = [])
+    {
+        if (!$userService->isLogged()) {
+            $this->redirect("login.php");
+        }
+
+        $currentUser = $userService->currentUser();
+
+        if (isset($formData['edit'])) {
+            $this->handleEditProcess($userService, $formData);
+        } else {
+            $this->render("users/profile", $currentUser);
+        }
+    }
+
+    private function handleEditProcess(UserServiceInterface $userService, array $formData)
+    {
+        $user = $userService->currentUser();
+
+        $user->setUsername($formData['username']);
+        $user->setUsername($formData['password']);
+        $user->setUsername($formData['first_name']);
+        $user->setUsername($formData['last_name']);
+        $user->setUsername($formData['born_on']);
+
+        if ($userService->edit($user)) {
+            $this->redirect("profile.php");
+        } else {
+
+        }
+    }
 }
