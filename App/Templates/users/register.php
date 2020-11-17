@@ -37,5 +37,8 @@
         <br>
         <input type="submit" name="register" value="Register"/>
     </form>
+
+    <br>
+    <h3>If you recall your credentials just <a href="login.php">log in :)</a></h3>
 </body>
 </html>

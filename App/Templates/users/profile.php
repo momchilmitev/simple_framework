@@ -39,6 +39,10 @@
     <br>
     <input type="submit" name="edit" value="Edit"/>
 </form>
+
+<br>
+
+<h3>You can <a href="logout.php">logout</a> or see <a href="all.php">all users</a></h3>
 </body>
 </html>
 

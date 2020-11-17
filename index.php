@@ -1,11 +1,10 @@
-<?php
+<h1>Howdy friends!</h1>
 
-//spl_autoload_register(function($class) {
-//    $file = str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
-//    if (file_exists($file)) {
-//        require_once $file;
-//    }
-//});
+<br>
+<br>
+
+<h3>If you are already familiar with the system <a href="login.php">log in</a> otherwise <a href="register.php">register</a> :)</h3>
+
 
 
 
