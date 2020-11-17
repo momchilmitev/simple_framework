@@ -87,4 +87,9 @@ class UserHttpHandler extends UserHttpHandlerAbstract
 
         }
     }
+
+    public function all(UserServiceInterface $userService)
+    {
+        $this->render("users/all", $userService->getAll());
+    }
 }
