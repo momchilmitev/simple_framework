@@ -63,7 +63,11 @@ class UserService implements UserServiceInterface
 
     public function isLogged(): bool
     {
-        // TODO: Implement isLogged() method.
+        if (!$this->currentUser()) {
+            return false;
+        }
+
+        return true;
     }
 
     public function edit(UserDTO $userDTO): bool
