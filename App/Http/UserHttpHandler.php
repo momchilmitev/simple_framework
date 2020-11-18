@@ -4,6 +4,7 @@
 namespace App\Http;
 
 
+use App\Data\ErrorDTO;
 use App\Data\UserDTO;
 use App\Services\UserServiceInterface;
 
@@ -52,7 +53,7 @@ class UserHttpHandler extends UserHttpHandlerAbstract
             $_SESSION['id'] = $user->getId();
             $this->redirect("profile.php");
         } else {
-            $this->render("users/login");
+            $this->render("app/error", new ErrorDTO("Wrong credentials sorry!"));
         }
     }
 
